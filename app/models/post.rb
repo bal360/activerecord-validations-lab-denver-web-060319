@@ -9,8 +9,16 @@ class Post < ActiveRecord::Base
     @@title_arr = [ /Won't Believe/, /Secret/, /Top[number]/, /Guess/ ]
 
     def non_clickbait
-        if @@title_arr.none? { |phrase| phrase.match title }
-            errors.add(:title, "must be clickbait")
+        # if @@title_arr.none? { |phrase| phrase.match(title) }
+        #     errors.add(:title, "must be clickbait")
+        # end
+
+        if title
+          if !!self.title.match?(/Won't Believe|Secret|Top \d|Guess/)
+            # binding.pry
+          # else 
+        end
+        errors.add(:title, "must be")
         end
     end
 
